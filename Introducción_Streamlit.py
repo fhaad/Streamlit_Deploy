@@ -1,31 +1,87 @@
+import pandas as pd
+import numpy as np
 import streamlit as st
-
-
+import matplotlib.pylab as plt
 
 st.title('Introducción a Streamlit')
+st.text('Sitio web para explorar la visualizacion de graficos')
 st.markdown('***')
+
+# aqui vamos a cargar un DataFrame y mostrarlo en streamlit localmente
+
+# ruta de los datasets
+dataset = pd.read_csv(r'D:\Streamlit_Deploy\Datasets\wine_reviews.csv', sep = ',', encoding = 'utf_8')
+#st.dataframe(dataset) # Con esta instruccion se muestra el DataFrame
+
+def data(dataset):
+    st.header('Dataset')
+    st.dataframe(dataset)
+
+def stats(dataset):
+    st.header('Data Statistics')
+    st.write(dataset.describe())
+
+def data_header(dataset):
+    st.header('Data Header')
+    st.write(dataset.head(10))
+
+def plot(dataset):
+    fig, ax=plt.subplot(1,1)
+    ax.scatter(x=dataset['country'], y=dataset['points'])
+    ax.set_xlabel('pais')
+    ax.set_ylabel('puntos')
+    st.pyplot(fig)
+
+def lines():
+    chart_data = pd.DataFrame(
+    np.random.randn(20, 3),
+    columns=['a', 'b', 'c'])
+
+    st.line_chart(chart_data)
+
+
+
+st.sidebar.title('Navegador')
+uploaded_file = st.sidebar.file_uploader('Cargue su archivo aqui')
+
+options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas'])
+
+if uploaded_file:
+    dataset = pd.read_csv(uploaded_file)
+
+
+if options == 'Dataset':
+    st.text('Podemos Observar el Dataset')
+    data(dataset)
+elif options == 'Data Statistics':
+    st.text('Despliegue de la estadistica general del Dataset')
+    stats(dataset)
+elif options == 'Data Header':
+    st.text('Despliegue de los primeros 10 registros')
+    data_header(dataset)
+elif options == 'plot':
+    st.text('Grafico de puntos')
+    plot(dataset)
+elif options == 'lineas':
+    st.text('Grafico de lineas')
+    lines()
+
+
+
+
 
 st.sidebar.markdown('Introducción sobre los usos y ventajas de Streamlit')
 
-st.markdown('## ¿Qué es y para qué sirve streamlit?')
-st.markdown('''
-Streamlit es una librería que permite crear `aplicaciones web` para Data Science y Machine Learning de forma rápida y sin necesidad de saber otro lenguaje de programación, debido a que son `desarrolladas puramente en Python`.
+# Using object notation
+add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+)
 
-Es compatible con las librerías más usadas en esta área, como Numpy, Pandas, Matplotlib, Seaborn, Scikit-Learn, Keras, PyTorch, etc.
-''')
-
-st.markdown('## ¿Por qué Streamlit?')
-st.markdown('''
-Para tener un `dashboard en Python` necesitamos unir la manipulación de datos con la visualización, e incorporar interacción con el usuario.
-
-Para poder hacer esta unión sin tener que utilizar código específico para la creación de páginas webs, existen las `librerías Streamlit y Dash`. Ambas brindan un servicio para construir aplicaciones webs a través de datos trabajados en Python pero Stremlit, a diferencia de dash, no requiere experiencia en temas front-end (como CSS, Html u otro lenguaje) ni necesita grandes servidores de almacenamiento.
-
-Por esto, se recomienda utilizar Streamlit en proyectos en los cuales se necesite crear dashboards de forma `rápida, sencilla y sólo con lenguaje Python`. 
-''')
-
-st.markdown('***')
-st.write('## Material complementario')
-st.markdown('[Documentación Streamlit](https://docs.streamlit.io/library/api-reference)')
-st.markdown('[Uso Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)')
-
+# Using "with" notation
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
 
