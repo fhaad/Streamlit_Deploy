@@ -48,7 +48,7 @@ def interactive_plot(dataset):
     st.plotly_chart(plot)
 
 def interactive_plot_detalle(dataset):
-    x_axis_val = st.selectbox('Seleccione X-Eje Pais', options=dataset['country'])
+    x_axis_val = st.selectbox('Seleccione X-Eje Pais', options=dataset['variety'])
     y_axis_val = st.selectbox('Seleccione Y-Eje Price', options=dataset['price'])
     plot = px.scatter(dataset, x=x_axis_val, y=y_axis_val)
     st.plotly_chart(plot)
@@ -66,6 +66,10 @@ options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statisti
 if uploaded_file:
     dataset = pd.read_csv(uploaded_file)
 #--------------------------------------------------------------------------------------#
+# codigo para reemplazar los valores NAN en cero
+
+dataset['variety'].fillna(0) # Esta sentencia llena de valores (0) los valores NaN. Se recomienda no hacerlo si no esta seguro
+
 
 #--------------------------------------------------------------------------------------#
 # AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES
