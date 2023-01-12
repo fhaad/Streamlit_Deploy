@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import matplotlib.pylab as plt
+import plotly.express as px
 
 st.title('Introducción a Streamlit')
 st.text('Sitio web para explorar la visualizacion de graficos')
@@ -42,7 +43,8 @@ def lines():
 def interactive_plot(dataset):
     x_axis_val = st.selectbox('Seleccione X-Eje Value', options=dataset.columns)
     y_axis_val = st.selectbox('Seleccione Y-Eje Value', options=dataset.columns)
-
+    plot = px.scatter(dataset, x=x_axis_val, y=y_axis_val)
+    st.plotly_chart(plot)
 
 
 
