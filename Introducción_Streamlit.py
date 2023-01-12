@@ -39,12 +39,17 @@ def lines():
 
     st.line_chart(chart_data)
 
+def interactive_plot(dataset):
+    x_axis_val = st.selectbox('Seleccione X-Eje Value', options=dataset.columns)
+    y_axis_val = st.selectbox('Seleccione Y-Eje Value', options=dataset.columns)
+
+
 
 
 st.sidebar.title('Navegador')
 uploaded_file = st.sidebar.file_uploader('Cargue su archivo aqui')
 
-options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas'])
+options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas', 'Grafica Interactiva'])
 
 if uploaded_file:
     dataset = pd.read_csv(uploaded_file)
@@ -65,8 +70,9 @@ elif options == 'plot':
 elif options == 'lineas':
     st.text('Grafico de lineas')
     lines()
-
-
+elif options == 'Grafica Interactiva':
+    st.text('Grafico Interactivo')
+    interactive_plot(dataset)
 
 
 
