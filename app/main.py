@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import matplotlib.pylab as plt
+import plotly.express as px
 
 st.title('Introducción a Streamlit')
 st.text('Sitio web para explorar la visualizacion de graficos')
@@ -10,7 +11,7 @@ st.markdown('***')
 # aqui vamos a cargar un DataFrame y mostrarlo en streamlit localmente
 
 # ruta de los datasets
-dataset = pd.read_csv(r'D:\Streamlit_Deploy\Datasets\wine_reviews.csv', sep = ',', encoding = 'utf_8')
+#dataset = pd.read_csv(r'D:\Streamlit_Deploy\Datasets\wine_reviews.csv', sep = ',', encoding = 'utf_8')
 #st.dataframe(dataset) # Con esta instruccion se muestra el DataFrame
 
 def data(dataset):
@@ -39,12 +40,17 @@ def lines():
 
     st.line_chart(chart_data)
 
+def interactive_plot(dataset):
+    x_axis_val = st.selectbox('Seleccione X-Eje Value', options=dataset.columns)
+    y_axis_val = st.selectbox('Seleccione Y-Eje Value', options=dataset.columns)
+    plot = px.scatter(dataset, x=x_axis_val, y=y_axis_val)
+    st.plotly_chart(plot)
 
 
 st.sidebar.title('Navegador')
 uploaded_file = st.sidebar.file_uploader('Cargue su archivo aqui')
 
-options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas'])
+options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas', 'Grafica Interactiva'])
 
 if uploaded_file:
     dataset = pd.read_csv(uploaded_file)
@@ -65,8 +71,9 @@ elif options == 'plot':
 elif options == 'lineas':
     st.text('Grafico de lineas')
     lines()
-
-
+elif options == 'Grafica Interactiva':
+    st.text('Grafico Interactivo')
+    interactive_plot(dataset)
 
 
 
@@ -84,7 +91,6 @@ with st.sidebar:
         "Choose a shipping method",
         ("Standard (5-15 days)", "Express (2-5 days)")
     )
-
 
 
 
