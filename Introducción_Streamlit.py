@@ -10,7 +10,7 @@ st.markdown('***')
 # aqui vamos a cargar un DataFrame y mostrarlo en streamlit localmente
 
 # ruta de los datasets
-dataset = pd.read_csv(r'D:\Streamlit_Deploy\Datasets\wine_reviews.csv', sep = ',', encoding = 'utf_8')
+#dataset = pd.read_csv(r'D:\Streamlit_Deploy\Datasets\wine_reviews.csv', sep = ',', encoding = 'utf_8')
 #st.dataframe(dataset) # Con esta instruccion se muestra el DataFrame
 
 def data(dataset):
