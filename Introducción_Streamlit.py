@@ -48,8 +48,8 @@ def interactive_plot(dataset):
     st.plotly_chart(plot)
 
 def interactive_plot_detalle(dataset):
-    x_axis_val = st.selectbox('Seleccione X-Eje Pais', options=dataset['variety'])
-    y_axis_val = st.selectbox('Seleccione Y-Eje Price', options=dataset['price'])
+    x_axis_val = st.selectbox('Seleccione X-Eje Variedad', options=dataset['variety'])
+    y_axis_val = st.selectbox('Seleccione Y-Eje Precio', options=dataset['price'])
     plot = px.scatter(dataset, x=x_axis_val, y=y_axis_val)
     st.plotly_chart(plot)
 
