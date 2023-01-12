@@ -66,10 +66,6 @@ options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statisti
 if uploaded_file:
     dataset = pd.read_csv(uploaded_file)
 #--------------------------------------------------------------------------------------#
-# codigo para reemplazar los valores NAN en cero
-
-dataset['variety'].fillna(0) # Esta sentencia llena de valores (0) los valores NaN. Se recomienda no hacerlo si no esta seguro
-
 
 #--------------------------------------------------------------------------------------#
 # AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES
