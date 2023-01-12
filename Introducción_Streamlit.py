@@ -47,7 +47,6 @@ def interactive_plot(dataset):
     st.plotly_chart(plot)
 
 
-
 st.sidebar.title('Navegador')
 uploaded_file = st.sidebar.file_uploader('Cargue su archivo aqui')
 
