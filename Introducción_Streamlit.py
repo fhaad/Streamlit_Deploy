@@ -44,9 +44,9 @@ def lines():
 def interactive_plot(dataset):
     x_axis_val = st.selectbox('Seleccione X-Eje Value', options=dataset.columns)
     y_axis_val = st.selectbox('Seleccione Y-Eje Value', options=dataset.columns)
-    color = st.color_picker('Seleccione color de la grafica')
+    col = st.color_picker('Seleccione color de la grafica')
     plot = px.scatter(dataset, x=x_axis_val, y=y_axis_val)
-    plot.update_traces(marker=dict(color=color))
+    plot.update_traces(marker=dict(color=col))
     st.plotly_chart(plot)
     
 
