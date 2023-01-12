@@ -1,10 +1,6 @@
 import streamlit as st
-from streamlit_extras.stoggle import stoggle
 
-stoggle(
-    "Click me!",
-    """🥷 Surprise! Here's some additional content""",
-)
+
 
 st.title('Introducción a Streamlit')
 st.markdown('***')
@@ -31,3 +27,5 @@ st.markdown('***')
 st.write('## Material complementario')
 st.markdown('[Documentación Streamlit](https://docs.streamlit.io/library/api-reference)')
 st.markdown('[Uso Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)')
+
+
