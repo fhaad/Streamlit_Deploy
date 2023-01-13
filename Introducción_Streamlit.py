@@ -50,19 +50,15 @@ def interactive_plot(dataset):
     st.plotly_chart(plot)
     
 
-def interactive_plot_detalle(dataset):
-    x1_axis_val = st.selectbox('Seleccione X-Eje Variedad', options=dataset['variety'])
-    y1_axis_val = st.selectbox('Seleccione Y-Eje Precio', options=dataset['price'])
-    plot = px.scatter(dataset, x = x1_axis_val, y = y1_axis_val)
-    st.plotly_chart(plot)
+
 
 #--------------------------------------------------------------------------------------#
-# NVEGADOR DE OPCIONES CON LA CARGA DE DATASET
+# NAVEGADOR DE OPCIONES CON LA CARGA DE DATASET
 st.sidebar.title('Navegador de Opciones')
 uploaded_file = st.sidebar.file_uploader('Cargue su DATASET aqui')
 
 options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas', 'Grafica Interactiva',
-                            'Grafica Detallada Interactiva'
+                            
 ])
 
 # CARGA DE DATASET A DATAFRAME
@@ -71,7 +67,7 @@ if uploaded_file:
 #--------------------------------------------------------------------------------------#
 
 #--------------------------------------------------------------------------------------#
-# AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES
+# AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES y DE NAVEGACION
 if options == 'Dataset':
     st.text('Podemos Observar el Dataset')
     data(dataset)
@@ -90,9 +86,7 @@ elif options == 'lineas':
 elif options == 'Grafica Interactiva':
     st.text('Grafico Interactivo')
     interactive_plot(dataset)
-elif options == 'Grafica Detallada Interactiva':
-    st.text('Grafico Interactivo')
-    interactive_plot_detalle(dataset)
+
 #--------------------------------------------------------------------------------------#
 
 st.sidebar.markdown('Introducción sobre los usos y ventajas de Streamlit')

@@ -13,7 +13,8 @@ st.markdown('***')
 # ruta de los datasets
 #dataset = pd.read_csv(r'D:\Streamlit_Deploy\Datasets\wine_reviews.csv', sep = ',', encoding = 'utf_8')
 #st.dataframe(dataset) # Con esta instruccion se muestra el DataFrame
-
+#--------------------------------------------------------------------------------------#
+# FUNCIONES PRINCIPALES
 def data(dataset):
     st.header('Dataset')
     st.dataframe(dataset)
@@ -43,19 +44,30 @@ def lines():
 def interactive_plot(dataset):
     x_axis_val = st.selectbox('Seleccione X-Eje Value', options=dataset.columns)
     y_axis_val = st.selectbox('Seleccione Y-Eje Value', options=dataset.columns)
+    col = st.color_picker('Seleccione color de la grafica')
     plot = px.scatter(dataset, x=x_axis_val, y=y_axis_val)
+    plot.update_traces(marker=dict(color=col))
     st.plotly_chart(plot)
+    
 
 
-st.sidebar.title('Navegador')
-uploaded_file = st.sidebar.file_uploader('Cargue su archivo aqui')
 
-options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas', 'Grafica Interactiva'])
+#--------------------------------------------------------------------------------------#
+# NAVEGADOR DE OPCIONES CON LA CARGA DE DATASET
+st.sidebar.title('Navegador de Opciones')
+uploaded_file = st.sidebar.file_uploader('Cargue su DATASET aqui')
 
+options = st.sidebar.radio('Paginas', options=['Home', 'Dataset', 'Data Statistics', 'Data Header', 'plot', 'lineas', 'Grafica Interactiva'
+                            
+])
+
+# CARGA DE DATASET A DATAFRAME
 if uploaded_file:
     dataset = pd.read_csv(uploaded_file)
+#--------------------------------------------------------------------------------------#
 
-
+#--------------------------------------------------------------------------------------#
+# AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES y DE NAVEGACION
 if options == 'Dataset':
     st.text('Podemos Observar el Dataset')
     data(dataset)
@@ -75,7 +87,7 @@ elif options == 'Grafica Interactiva':
     st.text('Grafico Interactivo')
     interactive_plot(dataset)
 
-
+#--------------------------------------------------------------------------------------#
 
 st.sidebar.markdown('Introducción sobre los usos y ventajas de Streamlit')
 
@@ -92,6 +104,7 @@ with st.sidebar:
         ("Standard (5-15 days)", "Express (2-5 days)")
     )
 
+#--------------------------------------------------------------------------------------#
 
 
 
