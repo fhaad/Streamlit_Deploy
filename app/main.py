@@ -18,29 +18,28 @@ st.markdown('***')
 def data(dataset):
     st.header('Dataset')
     st.dataframe(dataset)
-
+#--------------------------------------------------------------------------------------#
 def stats(dataset):
     st.header('Data Statistics')
     st.write(dataset.describe())
-
+#--------------------------------------------------------------------------------------#
 def data_header(dataset):
     st.header('Data Header')
     st.write(dataset.head(10))
-
+#--------------------------------------------------------------------------------------#
 def plot(dataset):
     fig, ax=plt.subplot(1,1)
     ax.scatter(x=dataset['country'], y=dataset['points'])
     ax.set_xlabel('pais')
     ax.set_ylabel('puntos')
     st.pyplot(fig)
-
+#--------------------------------------------------------------------------------------#
 def lines():
     chart_data = pd.DataFrame(
     np.random.randn(20, 3),
     columns=['a', 'b', 'c'])
-
     st.line_chart(chart_data)
-
+#--------------------------------------------------------------------------------------#
 def interactive_plot(dataset):
     x_axis_val = st.selectbox('Seleccione X-Eje Value', options=dataset.columns)
     y_axis_val = st.selectbox('Seleccione Y-Eje Value', options=dataset.columns)
@@ -48,10 +47,12 @@ def interactive_plot(dataset):
     plot = px.scatter(dataset, x=x_axis_val, y=y_axis_val)
     plot.update_traces(marker=dict(color=col))
     st.plotly_chart(plot)
-    
+#--------------------------------------------------------------------------------------#    
 
 
 
+
+#--------------------------------------------------------------------------------------#
 #--------------------------------------------------------------------------------------#
 # NAVEGADOR DE OPCIONES CON LA CARGA DE DATASET
 st.sidebar.title('Navegador de Opciones')

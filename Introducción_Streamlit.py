@@ -15,6 +15,7 @@ st.markdown('***')
 #st.dataframe(dataset) # Con esta instruccion se muestra el DataFrame
 #--------------------------------------------------------------------------------------#
 # FUNCIONES PRINCIPALES
+@st.cache
 def data(dataset):
     st.header('Dataset')
     st.dataframe(dataset)
