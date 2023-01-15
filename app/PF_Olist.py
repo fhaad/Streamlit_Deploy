@@ -5,6 +5,7 @@ import matplotlib.pylab as plt
 import plotly.express as px
 import datetime
 from PIL import Image
+import altair as alt
 
 image = Image.open('D:\Streamlit_Deploy\src\Olist1.png')
 st.image(image, caption='', width=100)
@@ -28,7 +29,8 @@ st.sidebar.title('Navegador de Opciones')
 uploaded_file = st.sidebar.file_uploader('Cargue su DATASET aqui')
 
 options = st.sidebar.radio('Paginas', options=['Home','Ventas', 'Productos', 'Vendedores', 'Clientes', 'Marketing', 
-                                                'Metodos de pago', 'Reviews', 'Delivery', 'App', 'Uber', 'Histograma'
+                                                'Metodos de pago', 'Reviews', 'Delivery', 'App', 'Uber', 'Barras',
+                                                'Lineas'
                             
 ])
 
@@ -42,9 +44,10 @@ if uploaded_file:
 
 st.header('Visualizacion de Dashboard')
 dataset = pd.read_csv(r'D:\Streamlit_Deploy\Datasets\wine_reviews_clean.csv', sep = ',', encoding = 'utf_8')
-filter1 = dataset['variety']
-filter2 = dataset['points']
+filter = (dataset[['country','price']].groupby(['country']).mean().sort_values(by='price', ascending=False))
+filter
 #---------------------------------------------------------------------------------------#
+
 
 
 #--------------------------------------------------------------------------------------#
@@ -83,6 +86,24 @@ def lines():
     columns=['a', 'b', 'c'])
     st.line_chart(chart_data)
 #-------------------------------------------------------------------------------#
+
+def lines1():
+    line_chart = alt.Chart(dataset).mark_line().encode(
+        y =  alt.Y('price', title='Precios($)'),
+        x =  alt.X( 'country', title='Pais')
+    ).properties(
+        height=500, width=800,
+        title="Vinos del Mundo"
+    ).configure_title(
+        fontSize=16
+    ).configure_axis(
+        titleFontSize=14,
+        labelFontSize=12
+    )
+ 
+    st.altair_chart(line_chart, use_container_width=True)
+
+#-------------------------------------------------------------------------------#
 @st.cache
 def interactive_plot(dataset):
     x_axis_val = st.selectbox('Seleccione X-Eje Value', options=dataset.columns)
@@ -92,11 +113,14 @@ def interactive_plot(dataset):
     plot.update_traces(marker=dict(color=col))
     st.plotly_chart(plot)
 #-------------------------------------------------------------------------------#
-def histograma(dataset):
-    st.subheader('Number of pickups by hour')
-    hist_values = np.histogram(dataset[filter1], bins=24, range=(0,100))[4]
-    st.bar_chart(hist_values)
-
+def barras():
+    st.subheader('Grafico de Barras')
+    source = (dataset)
+    bar_chart = alt.Chart(source).mark_bar().encode(
+        y = 'price',
+        x = 'country',
+    )
+    st.altair_chart(bar_chart, use_container_width=True)
 
 #-------------------------------------------------------------------------------#
 @st.cache
@@ -150,7 +174,10 @@ elif options == 'Grafica Interactiva':
 elif options == 'Uber':
     st.text('Uber Interactivo')
     load_data(nrows)
-elif options == 'Histograma':
-    st.text('Grafico de Histograma')
-    histograma(dataset)
+elif options == 'Barras':
+    st.text('Grafico de Barras')
+    barras()
+elif options == 'Lineas':
+    st.text('Grafico de Lineas')
+    lines1()
 #--------------------------------------------------------------------------------------#
