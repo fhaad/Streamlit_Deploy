@@ -76,7 +76,7 @@ st.header('Visualizacion de Dashboard')
 
 #--------------------------------------------------------------------------------------#
 # FUNCIONES PRINCIPALES
-@st.cache
+
 def Ventas(dataset):
     st.header('Dataset')
     #st.dataframe(dataset)
