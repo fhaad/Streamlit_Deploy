@@ -88,7 +88,7 @@ def Ventas(dataset):
         y = precios_promedio.index,
         orientation="h",
         title="Promedio del Precio"
-        color_discrete_sequence=px.colors.qualitative.G10,
+        color="size",
         template='plotly_white',
     )
     fig_precios_promedio.update_layout(
