@@ -7,7 +7,7 @@ import datetime
 from PIL import Image
 import altair as alt
 #--------------------------------------------------------------------------------------#
-st.set_page_config(page_title="Proyecto Final - Olist", page_icon='low_brightness:')
+st.set_page_config(page_title="Proyecto Final - Olist", page_icon='low_brightness:', layout="wide")
 
 #--------------------------------------------------------------------------------------#
 # Logo de Olist
@@ -30,7 +30,7 @@ with right_column:
 
 #--------------------------------------------------------------------------------------#
 #Video de Olist
-st.markdown('***')
+
 video_file = open('video/Olist.mp4', 'rb')
 video_bytes = video_file.read()
 
