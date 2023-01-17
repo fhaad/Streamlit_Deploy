@@ -12,11 +12,12 @@ st.set_page_config(page_title="Proyecto Final - Olist", page_icon='low_brightnes
 #--------------------------------------------------------------------------------------#
 # Logo de Olist
 image = Image.open('src/Olist1.png')
-st.image(image, caption='', width=100)
+st.image(image, caption='', width=200)
 #--------------------------------------------------------------------------------------#
 st.title(":clipboard: Proyecto Final - Olist") 
 st.text('Sitio web para explorar la visualizacion de Dashboard')
 #--------------------------------------------------------------------------------------#
+# Divido en 2 columnas el texto de la consultoria y objetivo general
 left_column, right_column = st.columns(2)
 
 st.markdown('***')
@@ -78,7 +79,22 @@ st.header('Visualizacion de Dashboard')
 @st.cache
 def Ventas(dataset):
     st.header('Dataset')
-    st.dataframe(dataset)
+    #st.dataframe(dataset)
+    precios_promedio = (dataset.groupby(by=['variety']).avg()[['price']].sort_values(by='price'))
+
+    fig_precios_promedio = px.bar(
+        precios_promedio,
+        x = 'price',
+        y = precios_promedio.index,
+        orientation="h",
+        title="Promedio del Precio"
+        color_discrete_sequence=["#f5b932"] * len(precios_promedio),
+        template='plotly_white',
+    )
+    fig_precios_promedio.update_layout(
+        plot_bgcolor = "rgba(0,0,0,0)",
+        xaxis = dict(showgrid=False)
+    )
 #-------------------------------------------------------------------------------#
 @st.cache
 def stats(dataset):
