@@ -7,6 +7,9 @@ import datetime
 from PIL import Image
 import altair as alt
 #--------------------------------------------------------------------------------------#
+st.set_page_config(page_title="Proyecto Final - Olist", page_icon=':moneybag:', layout="wide")
+
+#--------------------------------------------------------------------------------------#
 # Logo de Olist
 image = Image.open('src/Olist1.png')
 st.image(image, caption='', width=100)
