@@ -165,7 +165,7 @@ def barras():
 # AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES y DE NAVEGACION
 if options == 'Ventas':
     st.text('Podemos Observar el Dataset')
-    Ventas()
+    Ventas(dataset)
 elif options == 'Data Statistics':
     st.text('Despliegue de la estadistica general del Dataset')
     stats(dataset)
