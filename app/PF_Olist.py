@@ -17,16 +17,20 @@ st.image(image, caption='', width=100)
 st.title(":clipboard: Proyecto Final - Olist") 
 st.text('Sitio web para explorar la visualizacion de Dashboard')
 #--------------------------------------------------------------------------------------#
+left_column, right_column = st.columns(2)
+
 st.markdown('***')
-st.header('Consultoría')
-st.markdown('Análisis y aplicación de estrategias de Data Science a un conjunto de datasets para conocer el comportamiento general de ventas, compras, mercadeo y demás datos de interés de la plataforma')
-st.markdown('*****')
-st.header('Objetivo General')
-st.markdown('Realizar un proceso de Extracción, Transformación y Carga (ETL) de la información relativa a la actividad de la plataforma OLIST para la elaboración y análisis de KPIs y métricas que proporcionen información relevante para la toma de decisiones basada en inteligencia de negocios')
-st.markdown('***')
+with left_column:
+    st.header('Consultoría')
+    st.markdown('Análisis y aplicación de estrategias de Data Science a un conjunto de datasets para conocer el comportamiento general de ventas, compras, mercadeo y demás datos de interés de la plataforma')
+
+with right_column:
+    st.header('Objetivo General')
+    st.markdown('Realizar un proceso de Extracción, Transformación y Carga (ETL) de la información relativa a la actividad de la plataforma OLIST para la elaboración y análisis de KPIs y métricas que proporcionen información relevante para la toma de decisiones basada en inteligencia de negocios')
+
 #--------------------------------------------------------------------------------------#
 #Video de Olist
-
+st.markdown('***')
 video_file = open('video/Olist.mp4', 'rb')
 video_bytes = video_file.read()
 
