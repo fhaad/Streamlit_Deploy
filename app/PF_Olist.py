@@ -7,7 +7,7 @@ import datetime
 from PIL import Image
 import altair as alt
 
-image = Image.open('D:\Streamlit_Deploy\src\Olist1.png')
+image = Image.open('\src\Olist1.png')
 st.image(image, caption='', width=100)
 st.title("Proyecto Final - Olist") 
 st.text('Sitio web para explorar la visualizacion de Dashboard')
