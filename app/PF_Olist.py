@@ -7,14 +7,14 @@ import datetime
 from PIL import Image
 import altair as alt
 #--------------------------------------------------------------------------------------#
-st.set_page_config(page_title="Proyecto Final - Olist", page_icon=':moneybag:')
+st.set_page_config(page_title="Proyecto Final - Olist", page_icon='low_brightness:')
 
 #--------------------------------------------------------------------------------------#
 # Logo de Olist
 image = Image.open('src/Olist1.png')
 st.image(image, caption='', width=100)
 #--------------------------------------------------------------------------------------#
-st.title("Proyecto Final - Olist") 
+st.title(":clipboard: Proyecto Final - Olist") 
 st.text('Sitio web para explorar la visualizacion de Dashboard')
 #--------------------------------------------------------------------------------------#
 st.markdown('***')
