@@ -54,8 +54,9 @@ if uploaded_file:
 
 st.header('Visualizacion de Dashboard')
 dataset = pd.read_csv('Datasets/wine_reviews_clean.csv', sep = ',', encoding = 'utf_8')
-filter = (dataset[['country','price']].groupby(['country']).mean().sort_values(by='price', ascending=False))
-filter
+st.dataframe(dataset) # visualiza el dataframe
+#filter = (dataset[['country','price']].groupby(['country']).mean().sort_values(by='price', ascending=False))
+#filter
 #---------------------------------------------------------------------------------------#
 
 
