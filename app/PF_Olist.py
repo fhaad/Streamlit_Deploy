@@ -84,7 +84,7 @@ def Ventas(dataset):
 
     fig_precios_promedio = px.bar(
         precios_promedio,
-        x = 'price',
+        x = 'Facturado',
         y = precios_promedio.index,
         orientation="h",
         title="Promedio del Precio",
