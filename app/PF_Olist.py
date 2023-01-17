@@ -80,7 +80,7 @@ st.header('Visualizacion de Dashboard')
 def Ventas(dataset):
     st.header('Dataset')
     #st.dataframe(dataset)
-    precios_promedio = (dataset.groupby(by=['variety']).mean()[['price']].sort_values(by='price'))
+    precios_promedio = (dataset.groupby(by=['variety']).sum()[['price']].sort_values(by='price'))
 
     fig_precios_promedio = px.bar(
         precios_promedio,
@@ -165,7 +165,7 @@ def barras():
 # AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES y DE NAVEGACION
 if options == 'Ventas':
     st.text('Podemos Observar el Dataset')
-    Ventas(dataset)
+    Ventas()
 elif options == 'Data Statistics':
     st.text('Despliegue de la estadistica general del Dataset')
     stats(dataset)
