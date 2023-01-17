@@ -6,12 +6,14 @@ import plotly.express as px
 import datetime
 from PIL import Image
 import altair as alt
-
+#--------------------------------------------------------------------------------------#
+# Logo de Olist
 image = Image.open('src/Olist1.png')
 st.image(image, caption='', width=100)
+#--------------------------------------------------------------------------------------#
 st.title("Proyecto Final - Olist") 
 st.text('Sitio web para explorar la visualizacion de Dashboard')
-
+#--------------------------------------------------------------------------------------#
 st.markdown('***')
 st.header('Consultoría')
 st.markdown('Análisis y aplicación de estrategias de Data Science a un conjunto de datasets para conocer el comportamiento general de ventas, compras, mercadeo y demás datos de interés de la plataforma')
@@ -19,6 +21,14 @@ st.markdown('***')
 st.header('Objetivo General')
 st.markdown('Realizar un proceso de Extracción, Transformación y Carga (ETL) de la información relativa a la actividad de la plataforma OLIST para la elaboración y análisis de KPIs y métricas que proporcionen información relevante para la toma de decisiones basada en inteligencia de negocios')
 st.markdown('***')
+#--------------------------------------------------------------------------------------#
+#Video de Olist
+
+video_file = open('video/Olist.mp4', 'rb')
+video_bytes = video_file.read()
+
+st.video(video_bytes)
+
 #--------------------------------------------------------------------------------------#
 DATE_COLUMN = 'date/time'
 DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
