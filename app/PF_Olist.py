@@ -60,7 +60,7 @@ if uploaded_file:
     dataset = pd.read_csv(uploaded_file)
 #--------------------------------------------------------------------------------------#
 st.subheader('Dataset de Análisis')
-dataset = pd.read_csv('Datasets/wine_reviews_clean.csv', sep = ',', encoding = 'utf_8')
+#dataset = pd.read_csv('Datasets/wine_reviews_clean.csv', sep = ',', encoding = 'utf_8')
 st.dataframe(dataset) # visualiza el dataframe
 #filter = (dataset[['country','price']].groupby(['country']).mean().sort_values(by='price', ascending=False))
 #filter
@@ -80,7 +80,7 @@ st.header('Visualizacion de Dashboard')
 def Ventas(dataset):
     st.header('Dataset')
     #st.dataframe(dataset)
-    precios_promedio = (dataset.groupby(by=['country']).sum()[['price']].sort_values(by='price'))
+    precios_promedio = (dataset.groupby(by=['Nombres']).sum()[['Facturado']].sort_values(by='Facturado'))
 
     fig_precios_promedio = px.bar(
         precios_promedio,
