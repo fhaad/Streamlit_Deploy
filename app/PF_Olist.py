@@ -124,8 +124,8 @@ def lines():
 
 def lines1():
     line_chart = alt.Chart(dataset).mark_line().encode(
-        y =  alt.Y('price', title='Precios($)'),
-        x =  alt.X( 'country', title='Pais')
+        y =  alt.Y('Facturado', title='Precios($)'),
+        x =  alt.X( 'Fecha', title='Pais')
     ).properties(
         height=500, width=800,
         title="Vinos del Mundo"
