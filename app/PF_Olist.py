@@ -86,7 +86,7 @@ def Ventas(dataset):
         x = 'Facturado',
         y = precios_promedio.index,
         orientation="h",
-        title="Promedio del Precio",
+        title="Ventas Vendedor",
         color_discrete_sequence=["#f5b932"] * len(precios_promedio),
         template='plotly_white',
     )
