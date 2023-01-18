@@ -80,7 +80,7 @@ st.header('Visualizacion de Dashboard')
 def Ventas(dataset):
     st.header('Dataset')
     #st.dataframe(dataset)
-    precios_promedio = (dataset.groupby(by=['Nombres']).mean()[['Facturado']].sort_values(by='Facturado'))
+    precios_promedio = (dataset.groupby(by=['Nombres']).sum()[['Facturado']].sort_values(by='Facturado'))
     fig_precios_promedio = px.bar(
         precios_promedio,
         x = 'Facturado',
