@@ -81,8 +81,6 @@ def Ventas(dataset):
     st.header('Dataset')
     #st.dataframe(dataset)
     precios_promedio = (dataset.groupby(by=['Nombres']).sum()[['Facturado']].sort_values(by='Facturado'))
-    
-
     fig_precios_promedio = px.bar(
         precios_promedio,
         x = 'Facturado',
@@ -96,6 +94,10 @@ def Ventas(dataset):
         plot_bgcolor = "rgba(0,0,0,0)",
         xaxis = dict(showgrid=False)
     )
+
+    left_column, right_column = st.columns(2)
+    left_column.plotly_chart(fig_precios_promedio, use_container_width=True)
+
 #-------------------------------------------------------------------------------#
 @st.cache
 def stats(dataset):
