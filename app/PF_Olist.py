@@ -169,10 +169,10 @@ def kpi():
     st.markdown('***')
     with left_column:
         st.header('Venta Total')
-        int(total_ventas)
+        {total_ventas}
     with right_column:
         st.header('Presupuesto Total')
-        int(total_presupuesto)
+        {total_presupuesto}
 
 
 
