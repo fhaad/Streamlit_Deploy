@@ -81,6 +81,7 @@ def Ventas(dataset):
     st.header('Dataset')
     #st.dataframe(dataset)
     precios_promedio = (dataset.groupby(by=['Nombres']).sum()[['Facturado']].sort_values(by='Facturado'))
+    precios_promedio.to_dict()
 
     fig_precios_promedio = px.bar(
         precios_promedio,
@@ -168,14 +169,14 @@ def kpi():
     st.markdown('***')
     with left_column:
         st.header('Venta Total')
-        st.markdown(f"'{total_ventas}'")
+        st.markdown(f"'{int(total_ventas)}'")
     with right_column:
         st.header('Presupuesto Total')
-        st.markdown(f"'{total_presupuesto}'")
+        st.markdown(f"'{int(total_presupuesto)}'")
 
 
 
-
+#{"Pelis":int(peliculas), "Series":int(series)}
 
 #--------------------------------------------------------------------------------------#
 # AREA DE OPCIONES PARA EJECUTAR LAS FUNCIONALIDADES y DE NAVEGACION
