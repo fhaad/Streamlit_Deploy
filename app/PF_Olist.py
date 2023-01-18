@@ -95,8 +95,27 @@ def Ventas(dataset):
         xaxis = dict(showgrid=False)
     )
 
+    vendedor_presupuesto = (dataset.groupby(by=['Nombres']).sum()[['Presupuesto']].sort_values(by='Presupuesto'))
+    fig_vendedor_presupuesto = px.bar(
+        vendedor_presupuesto,
+        x = vendedor_presupuesto.index,
+        y = 'Presupuesto',
+        orientation="h",
+        title="Presupuesto vendedor",
+        color_discrete_sequence=["#f6b960"] * len(vendedor_presupuesto),
+        template='plotly_white',
+    )
+    fig_vendedor_presupuesto.update_layout(
+        plot_bgcolor = "rgba(0,0,0,0)",
+        xaxis = dict(showgrid=False)
+    )
+
+
+
+
     left_column, right_column = st.columns(2)
     left_column.plotly_chart(fig_precios_promedio, use_container_width=True)
+    right_column.plotly_chart(fig_vendedor_presupuesto, use_container_width=True)
 
 #-------------------------------------------------------------------------------#
 @st.cache
