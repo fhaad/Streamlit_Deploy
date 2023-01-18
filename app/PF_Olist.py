@@ -48,7 +48,7 @@ uploaded_file = st.sidebar.file_uploader('Cargue su DATASET aqui')
 
 options = st.sidebar.radio('Paginas', options=['Home','Ventas', 'Productos', 'Vendedores', 'Clientes', 'Marketing', 
                                                 'Metodos de pago', 'Reviews', 'Delivery', 'App', 'Barras',
-                                                'Lineas'
+                                                'Lineas', 'kpi'
                             
 ])
 
@@ -158,6 +158,22 @@ def barras():
     st.altair_chart(bar_chart, use_container_width=True)
 
 #-------------------------------------------------------------------------------#
+def kpi():
+    st.subheader('KPIs')
+    total_ventas = int(dataset['Facturado'].sum())
+    total_presupuesto = int(dataset['Presupuesto'].sum())
+
+    left_column, right_column = st.columns(2)
+
+    st.markdown('***')
+    with left_column:
+        st.header('Venta Total')
+        st.markdown('{total_ventas}')
+    with right_column:
+        st.header('Presupuesto Total')
+        st.markdown('{total_presupuesto}')
+
+
 
 
 
@@ -187,4 +203,8 @@ elif options == 'Barras':
 elif options == 'Lineas':
     st.text('Grafico de Lineas')
     lines1()
+elif options == 'kpi':
+    st.text('Muestra KPI')
+    kpi()
+
 #--------------------------------------------------------------------------------------#
