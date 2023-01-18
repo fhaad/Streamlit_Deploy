@@ -153,7 +153,7 @@ def barras():
     #filter2 = dataset['Facturado'].sum()
     source = (dataset)
     bar_chart = alt.Chart(source).mark_bar().encode(
-        y = dataset['Facturado'].sum()
+        y = dataset['Facturado'].sum(),
         x = 'Nombres',
     )
     st.altair_chart(bar_chart, use_container_width=True)
