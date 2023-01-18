@@ -152,8 +152,8 @@ def barras():
     st.subheader('Grafico de Barras')
     source = (dataset)
     bar_chart = alt.Chart(source).mark_bar().encode(
-        y = 'price',
-        x = 'country',
+        y = 'Facturado',
+        x = 'Nombres',
     )
     st.altair_chart(bar_chart, use_container_width=True)
 
