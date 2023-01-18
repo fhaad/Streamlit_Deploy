@@ -168,10 +168,10 @@ def kpi():
     st.markdown('***')
     with left_column:
         st.header('Venta Total')
-        st.markdown('{total_ventas}')
+        st.markdown(f"'{total_ventas}'")
     with right_column:
         st.header('Presupuesto Total')
-        st.markdown('{total_presupuesto}')
+        st.markdown(f"'{total_presupuesto}'")
 
 
 
