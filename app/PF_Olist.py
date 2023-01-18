@@ -83,7 +83,7 @@ def Ventas(dataset):
     precios_promedio = (dataset.groupby(by=['Nombres']).sum()[['Facturado']].sort_values(by='Facturado'))
     fig_precios_promedio = px.bar(
         precios_promedio,
-        x = 'Facturado',
+        x = 'Nombres',
         y = precios_promedio.index,
         orientation="h",
         title="Promedio del Precio",
