@@ -150,9 +150,10 @@ def interactive_plot(dataset):
 #-------------------------------------------------------------------------------#
 def barras():
     st.subheader('Grafico de Barras')
+    filter2 = dataset['Facturado'].sum()
     source = (dataset)
     bar_chart = alt.Chart(source).mark_bar().encode(
-        y = 'Facturado',
+        y = filter2,
         x = 'Nombres',
     )
     st.altair_chart(bar_chart, use_container_width=True)
