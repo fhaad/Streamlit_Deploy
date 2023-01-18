@@ -160,8 +160,8 @@ def barras():
 #-------------------------------------------------------------------------------#
 def kpi():
     st.subheader('KPIs')
-    total_ventas = int(dataset['Facturado'].sum())
-    total_presupuesto = int(dataset['Presupuesto'].sum())
+    total_ventas = dataset['Facturado'].sum()
+    total_presupuesto = dataset['Presupuesto'].sum()
 
     left_column, right_column = st.columns(2)
 
